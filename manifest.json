@@ -11,7 +11,7 @@
   "default_locale": "en",
   "background": {
     "page": "src/bg/background.html",
-    "persistent": true
+    "persistent": false
   },
   "options_page": "src/options_custom/index.html",
   "browser_action": {
@@ -20,6 +20,9 @@
     "default_popup": "src/browser_action/browser_action.html"
   },
   "permissions": [
+    "http://*/*",
+    "http://www.google.com/", 
+    "https://www.google.com/"
     "clipboardRead",
     "clipboardWrite",
     "fileBrowserHandler",
@@ -40,7 +43,8 @@
         "https://www.google.com/*"
       ],
       "js": [
-        "src/inject/inject.js"
+        "src/inject/inject.js",
+        "src/scripts/contentScript.js"
       ]
     }
   ]

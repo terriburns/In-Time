@@ -1,6 +1,20 @@
 <!doctype html>
-<style type="text/css">
-	#mainPopup {
+<html> 
+  <head> 
+    <style>
+      body {
+        width: 400px;
+      }
+      textarea {
+        width: 380px;
+        min-height: 200px;
+        margin: 0 auto;
+        background: #eee;
+        border: 0; 
+        padding: 10px;
+        font: 13px monospace;
+      }
+      #mainPopup {
 		padding: 10px;
 		height: 200px;
 		width: 400px;
@@ -9,9 +23,24 @@
 	h1 {
 		font-size: 2em;
 	}
-</style>
-
-<div id="mainPopup">
-<h1>Hello extensionizr!</h1>
-<p>To shut this popup down, edit the manifest file and remove the "default popup" key. To edit it, just edit ext/browser_action/browser_action.html. The CSS is there, too.</p>
-</div>
+    </style>
+    <script>
+      function onSelection(payload) {
+        console.log('Got selection: ' + payload);
+        document.getElementById("output-text").value = payload.text;
+        document.getElementById("output-html").value = payload.html;
+        chrome.extension.onRequest.removeListener(window.onSelection);
+      };
+    </script>
+  </head>
+  <body>
+	<div id="mainPopup">
+	<h1>Hello extensionizr!</h1>
+	<p>To shut this popup down, edit the manifest file and remove the "default popup" key. To edit it, just edit ext/browser_action/browser_action.html. The CSS is there, too.</p>
+	</div>
+    <script type="text/javascript"> 
+      chrome.extension.onRequest.addListener(onSelection);
+      chrome.tabs.executeScript(null, { file: "contentscript.js" }); 
+    </script>
+  </body> 
+</html>
