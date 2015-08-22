@@ -1,6 +1,5 @@
 function pasteSelection() {
     //Select current tab to send message
-    console.log("paster");
     chrome.tabs.query({
         "active": true,
         "currentWindow": true,
@@ -17,22 +16,24 @@ function pasteSelection() {
         }
     });
 }
+
 //Adding a handler when message is recieved from content scripts
-chrome.extension.onMessage.addListener(function (response, sender) {
-    //Set text to text area
+chrome.runtime.onMessage.addListener(function (response, sender) {
     console.log('x');
+    console.log(response.data);
     var text = document.getElementById('text');
     text.value = response.data;
-});
 
+});
+/*
 chrome.runtime.onMessage.addListener(function (response, sender) {
     //Set text to text area
-    console.log('xx');
+    console.log('xxx');
     var text = document.getElementById('text');
     text.value = response.data;
 });
 
-
+*/
 // Bind On click event to pasteSelection() function
 document.addEventListener("DOMContentLoaded", function () {
     document.getElementById("paste").onclick = pasteSelection;
