@@ -1,0 +1,31 @@
+.btn {
+  color: #ffffff;
+  font-size: 20px;
+  background: #35465c;
+  padding: 10px 20px 10px 20px;
+  text-decoration: none;
+}
+
+.btn:hover {
+  background: #3784b3;
+  text-decoration: none;
+}
+textarea {
+  width: 400px;
+}
+body {
+ background-color:none;
+}
+
+h1 {
+  font-color:#35465c;
+  font-size:25px;
+  text-align:center;
+}
+
+#mainPopup {
+    padding: 10px;
+    height: 200px;
+    width: 400px;
+    font-family: Helvetica, Ubuntu, Arial, sans-serif;
+  }
