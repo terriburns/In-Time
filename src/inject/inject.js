@@ -1,4 +1,4 @@
-chrome.extension.sendMessage({}, function(response) {
+/*chrome.extension.sendMessage({}, function(response) {
 	var readyStateCheckInterval = setInterval(function() {
 	if (document.readyState === "complete") {
 		clearInterval(readyStateCheckInterval);
@@ -10,4 +10,11 @@ chrome.extension.sendMessage({}, function(response) {
 
 	}
 	}, 10);
+});
+*/
+chrome.extension.onRequest.addListener(function(request, sender, sendResponse) {
+    if (request.method == "getSelection")
+      sendResponse({data: window.getSelection().toString()});
+    else
+      sendResponse({}); // snub them.
 });

@@ -13,7 +13,6 @@
     "page": "src/bg/background.html",
     "persistent": false
   },
-  "options_page": "src/options_custom/index.html",
   "browser_action": {
     "default_icon": "icons/icon19.png",
     "default_title": "browser action demo",
@@ -21,11 +20,11 @@
   },
   "permissions": [
     "http://*/*",
+    "https://*/*",
     "http://www.google.com/", 
-    "https://www.google.com/"
+    "https://www.google.com/",
     "clipboardRead",
     "clipboardWrite",
-    "fileBrowserHandler",
     "notifications",
     "tabs"
   ],
@@ -40,12 +39,13 @@
     },
     {
       "matches": [
-        "https://www.google.com/*"
+        "http://*/*"
       ],
       "js": [
         "src/inject/inject.js",
-        "src/scripts/contentScript.js"
-      ]
+      ],
+      "run_at": "document_start",
+      "all_frames": true
     }
   ]
 }
