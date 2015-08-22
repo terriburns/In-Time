@@ -12,9 +12,22 @@
 	}, 10);
 });
 */
+
+function pasteSelection() {
+	  chrome.tabs.getSelected(null, function(tab) {
+	    chrome.tabs.sendRequest(tab.id, {method: "getSelection"}, function (response) {
+	      var text = document.getElementById('text'); 
+	      text.innerHTML = response.data;
+	    });
+	  });
+}
+
 chrome.extension.onRequest.addListener(function(request, sender, sendResponse) {
     if (request.method == "getSelection")
       sendResponse({data: window.getSelection().toString()});
     else
       sendResponse({}); // snub them.
 });
+
+
+document.getElementsByClassName("paste").addEventListener("click", pasteSelection);
