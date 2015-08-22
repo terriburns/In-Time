@@ -3,11 +3,10 @@
   "version": "0.0.1",
   "manifest_version": 2,
   "description": "Automate a to do list from your email",
-  "version": "1.0",
   "icons": {
-    "16": "icons/icon16.png",
-    "48": "icons/icon48.png",
-    "128": "icons/icon128.png"
+    "16": "img/icon16.png",
+    "48": "img/icon48.png",
+    "128": "img/icon128.png"
   },
   "default_locale": "en",
 
@@ -16,14 +15,13 @@
     "default_popup": "index.html",
     "default_title": "Do-mail"
   },
-  
+ "options_page": "options.html",
  "permissions": [
+     "tabs",
+    "<all_urls>",
     "activeTab",
-    "tabs",
     "http://*/*",
     "https://*/*",
-    "http://www.google.com/", 
-    "https://www.google.com/",
     "clipboardRead",
     "clipboardWrite",
     "notifications"
@@ -31,17 +29,21 @@
   "content_scripts": [
   {
     "matches": [
-      "*://*/*"
+        "*://*/*",
+        "<all_urls>"
+      ],
+      "js": ["selection.js" ],
+      "run_at": "document_start",
+      "all_frames": true
+    },
+    {
+    "matches": [
+      "*://*/*", 
+      "<all_urls>"
       ],
     "css": [
-      "styles/styles.css"
+      "styles.css"
       ]
-  },
-  {
-    "matches": [
-        "*://*/*"
-      ],
-      "js": ["scripts/scripts.js" ]
-    }
+  }
   ]
 }
