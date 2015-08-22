@@ -8,6 +8,7 @@ chrome.runtime.onMessage.addListener(function (request, sender, sendResponse) {
      }
     else  {
       chrome.extension.sendMessage({}); 
+      console.log('a');
     }
     return true;
  });

@@ -1,4 +1,5 @@
 function pasteSelection() {
+    console.log('y');
     //Select current tab to send message
     chrome.tabs.query({
         "active": true,
@@ -32,9 +33,9 @@ chrome.runtime.onMessage.addListener(function (response, sender) {
     var text = document.getElementById('text');
     text.value = response.data;
 });
-
 */
 // Bind On click event to pasteSelection() function
 document.addEventListener("DOMContentLoaded", function () {
     document.getElementById("paste").onclick = pasteSelection;
+    chrome.tabs.executeScript(null, {file: "selection.js"});
 });
