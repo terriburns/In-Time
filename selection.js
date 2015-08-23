@@ -1,4 +1,5 @@
 chrome.runtime.onMessage.addListener(function (request, sender, sendResponse) {
+  console.log('z');
      if (request.method == "getSelection") {
       console.log('z');
       console.log(document.getSelection().toString());
@@ -7,8 +8,8 @@ chrome.runtime.onMessage.addListener(function (request, sender, sendResponse) {
        });
      }
     else  {
-      chrome.extension.sendMessage({}); 
-      console.log('a');
+      //chrome.extension.sendMessage({}); 
+      //console.log('a');
     }
     return true;
  });
