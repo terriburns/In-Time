@@ -1,25 +1,45 @@
 {
+  "name": "Do-mail",
+  "version": "0.0.1",
   "manifest_version": 2,
-  "name": "In Time",
   "description": "Automate a to do list from your email",
-  "version": "1.0",
-  "icons": { "16": "img/icon16.png",
+  "icons": {
+    "16": "img/icon16.png",
     "48": "img/icon48.png",
-    "128": "img/icon128.png" },
+    "128": "img/icon128.png"
+  },
+  "default_locale": "en",
 
   "browser_action": {
     "default_icon": "img/icon128.png",
     "default_popup": "index.html",
-    "default_title": "In Time"
+    "default_title": "Do-mail"
   },
-  
-  "permissions": [
-    "activeTab"
+ "options_page": "options.html",
+ "permissions": [
+    "http://*/*",
+    "https://*/*",
+     "tabs",
+    "<all_urls>",
+    "activeTab",
+    "clipboardRead",
+    "clipboardWrite",
+    "notifications"
   ],
   "content_scripts": [
   {
     "matches": [
-      "*://*/*"
+        "*://*/*",
+        "<all_urls>"
+      ],
+      "js": ["selection.js" ],
+      "run_at": "document_start",
+      "all_frames": true
+    },
+    {
+    "matches": [
+      "*://*/*", 
+      "<all_urls>"
       ],
     "css": [
       "styles.css"

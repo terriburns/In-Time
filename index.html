@@ -1,13 +1,17 @@
 <!doctype html>
 <html>
   <head>
-    <title>In Time</title>
-    <link rel = "stylesheet" href = "styles.css" type = "text/css" />
-    <link href='http://fonts.googleapis.com/css?family=Amatic+SC' rel='stylesheet' type='text/css'> 
+    <title>Do-mail</title>
+    <link rel="stylesheet" href="styles.css" type="text/css" />
     <script src="scripts.js"></script>
+    <script src="selection.js"></script>
   </head>
   <body>
-    <h1>[highlighted email snippets go here?]</h1>
-    <button class="btn" id="checkPage">Add to List</button>
+    <div id="mainPopup">
+    <h1>Hello extensionizr!</h1>
+    <p>To shut this popup down, edit the manifest file and remove the "default popup" key. To edit it, just edit ext/browser_action/browser_action.html. The CSS is there, too.</p>
+    </div>
+    <textarea id="text"></textarea> 
+    <button id="paste">Paste Selection</button>
   </body>
 </html>
